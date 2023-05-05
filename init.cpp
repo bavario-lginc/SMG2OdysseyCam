@@ -66,6 +66,6 @@ namespace {
     }
     kmCall(0x801180C8, OdysseyLikeCamera); // fmod in CameraFollow::startRound
     //kmCall(0x80115930, disableSFX); Crashes the game
-    kmCall(0x8011E118, holdCameraInPlaceLeft); // return in CameraUtil::testCameraPadTriggerLeft
-    kmCall(0x8011E168, holdCameraInPlaceRight); // return in CameraUtil::testCameraPadTriggerRight
+    kmCall(0x8011E118, holdCameraBtnLeft); // return in CameraUtil::testCameraPadTriggerLeft
+    kmCall(0x8011E168, holdCameraBtnRight); // return in CameraUtil::testCameraPadTriggerRight
 }
