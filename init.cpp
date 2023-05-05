@@ -51,8 +51,8 @@ namespace {
         }
         return result;
     }
-    bool disableSFX () {
-        return false; // Lol
+    int disableSFX () {
+        return 0;
     }
     int holdCameraBtnLeft () {
         // Normally, the camera functions call MR::testCorePadTriggerLeft,
@@ -65,7 +65,18 @@ namespace {
         return (MR::testCorePadTriggerRight(0) || MR::testCorePadButtonRight(0));
     }
     kmCall(0x801180C8, OdysseyLikeCamera); // fmod in CameraFollow::startRound
-    //kmCall(0x80115930, disableSFX); Crashes the game
-    kmCall(0x8011E118, holdCameraBtnLeft); // return in CameraUtil::testCameraPadTriggerLeft
-    kmCall(0x8011E168, holdCameraBtnRight); // return in CameraUtil::testCameraPadTriggerRight
+    kmCall(0x8011E118, holdCameraBtnLeft); // return in CameraLocalUtil::testCameraPadTriggerLeft
+    kmCall(0x8011E168, holdCameraBtnRight); // return in CameraLocalUtil::testCameraPadTriggerRight
+    // ----------------------------------------
+    // Here we change all instances of the game calling CameraDirector::isPlayableCameraSE
+    // to be false so that it doesn't play any soundeffects
+    kmCall(0x80115330, disableSFX);
+    kmCall(0x801153B0, disableSFX);
+    kmCall(0x801153D8, disableSFX);
+    kmCall(0x80115454, disableSFX);
+    kmCall(0x8011547C, disableSFX);
+    kmCall(0x801154E4, disableSFX);
+    kmCall(0x8011551C, disableSFX);
+    kmCall(0x80115578, disableSFX);
+    kmCall(0x801155C0, disableSFX);
 }
