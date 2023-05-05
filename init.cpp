@@ -54,17 +54,17 @@ namespace {
     bool disableSFX () {
         return false; // Lol
     }
-    int holdCameraInPlaceLeft () {
+    int holdCameraBtnLeft () {
         // Normally, the camera functions call MR::testCorePadTriggerLeft,
         // but that only returns true once while MR::testCorePadButtonLeft
         // returns true on every frame Left is held.
         return (MR::testCorePadTriggerLeft(0) || MR::testCorePadButtonLeft(0));
     }
-    int holdCameraInPlaceRight () {
+    int holdCameraBtnRight () {
         // Same here.
         return (MR::testCorePadTriggerRight(0) || MR::testCorePadButtonRight(0));
     }
-    kmCall(0x801180C8, OdysseyLikeCamera); // fmod in sub_80118090
+    kmCall(0x801180C8, OdysseyLikeCamera); // fmod in CameraFollow::startRound
     //kmCall(0x80115930, disableSFX); Crashes the game
     kmCall(0x8011E118, holdCameraInPlaceLeft); // return in CameraUtil::testCameraPadTriggerLeft
     kmCall(0x8011E168, holdCameraInPlaceRight); // return in CameraUtil::testCameraPadTriggerRight
